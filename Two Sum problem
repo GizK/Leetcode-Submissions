@@ -1,0 +1,30 @@
+#TWOSUM PROBLEM IN LEETCODE
+#DESCRIPTION OF THE PROBLEM: Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target. You may assume that each input would have exactly one solution, and you may not use the same element twice. You can return the answer in any order.
+
+class Solution(object):
+    def twoSum(self, nums, target): 
+
+        hash_nums= {} #creating a hash table for nums since its more efficient for time complexity. It stores the number and its index.
+
+        for index, number in enumerate(nums): #loops over the index of the number and its actual number in the list. enumerate is a built in loop function which is used to make the code cleaner and consise. 
+
+         difference = target-number #this is used to check if the result of the difference is found within the dictionary. It tells us the 2 numbers that add up to the target. 
+
+         if difference in hash_nums:
+             return[index, hash_nums[difference]] #this is what prints out the input, return is used in functions. it displays the index of the current number and the index of the number that adds it together to make the target. 'hash_nums[difference]' difference is the index of the number that is found in the dictionary that helps add to the target along with the current index 'index'.
+
+
+         hash_nums[number] = index #this adds the index(key) and the number(value) in the dictionary. 
+
+#notes: a hashmap is a dictionary, its efficient and fast with time complexity O(1). it is created as 'a={}' and key value pairs are added as 'a[key]=value'. Dictionaries are used for fast lookups. Enumerate is used to loop and for the code to be clean and consise. Return is used to pass values out of the function.
+
+#if line 14 was deleted, the function wont remember the previous number hence it wont be able to find another number that adds up to the target. Nothing would get stored and the dictionary would be empty.
+
+
+#First iteration (index = 0, number = 2):
+#difference = 9 - 2 = 7
+#7 is not in hash_nums so store 2:0 in hash_nums → now: {2: 0}
+
+#Second iteration (index = 1, number = 7):
+#difference = 9 - 7 = 2
+#2 is in hash_nums, so return [1, hash_nums[2]] → [1, 0]
