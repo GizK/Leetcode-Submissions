@@ -4,13 +4,19 @@
 
 class Solution(object):
     def triangleType(self, nums):
-        for number in enumerate(nums): #going through each number in the array
-            if nums[0] and nums[1] == nums[2]: #condition if all sides of triangle are equal
-                return("equilateral")
-        calc1= nums[0] + nums[1] #calculates the sum of two sides of the triangle
-        calc2= nums[1] + nums [2] 
-        calc3= nums [0] + nums[2] 
-        if calc1 > nums[2] and calc2 > nums[0] and calc3 > nums[1]: #condition if the sum of 2 sides are greater than the third side for all three cases
-            return("scalene")
+        a, b, c = nums[0], nums[1], nums[2] #easier and clearer to code when put in a format
+
+        if a == b == c:  # all sides equal
+            return "equilateral"
+
+        calc1 = a + b #calculates sum of 2 sides 
+        calc2 = b + c
+        calc3 = a + c
+
+        if calc1 > c and calc2 > a and calc3 > b: #nested if statement, first calculates if sum of 2 sides is greater than the 3rd (if it is then its a scalene triangle)
+            if a == b or b == c or a == c: #condition to see if all sides are equal
+                return "isosceles"
+            else:
+                return "scalene"
         else:
-            return("none") 
+            return "none" 
