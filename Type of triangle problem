@@ -1,0 +1,16 @@
+#TYPE OF TRIANGLE 
+#DESCRIPTION: You are given a 0-indexed integer array nums of size 3 which can form the sides of a triangle. A triangle is called equilateral if it has all sides of equal length. A triangle is called isosceles if it has exactly two sides of equal length. A triangle is called scalene if all its sides are of different lengths. Return a string representing the type of triangle that can be formed or "none" if it cannot form a triangle.
+#My code is only for the 2 cases that I needed to do in order to be accepted. 
+
+class Solution(object):
+    def triangleType(self, nums):
+        for number in enumerate(nums): #going through each number in the array
+            if nums[0] and nums[1] == nums[2]: #condition if all sides of triangle are equal
+                return("equilateral")
+        calc1= nums[0] + nums[1] #calculates the sum of two sides of the triangle
+        calc2= nums[1] + nums [2] 
+        calc3= nums [0] + nums[2] 
+        if calc1 > nums[2] and calc2 > nums[0] and calc3 > nums[1]: #condition if the sum of 2 sides are greater than the third side for all three cases
+            return("scalene")
+        else:
+            return("none") 
