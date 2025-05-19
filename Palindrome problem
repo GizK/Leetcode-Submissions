@@ -1,0 +1,20 @@
+#PALINDROME PROBLEM
+#DESCRIPTON: Given an integer x, return true if x is a palindrome, and false otherwise.
+
+class Solution(object):
+    def isPalindrome(self, x): 
+        if x > 0: 
+            reverse_positive_number= int(str(x)[::-1])
+            if reverse_positive_number == x:
+                return True
+            else:
+                return False
+
+        elif x < 0:
+            reverse_negative_number= int(str(x)[:0:-1])
+            if reverse_negative_number == x :
+                return True
+            else:
+                return False
+        else:
+            return True
